@@ -2,7 +2,6 @@
 using namespace std;
 int n, k;
 void hello(){
-
 	cout << "Welcome To Password Generator \n";
 	cout << "Enter Length of Password you want, and how many passwords you want to generate : ";
 }
@@ -25,11 +24,14 @@ int main(){
 	cout.tie(0);
 	cin >> n >> k;
 	generate();
-	ofstream MyFile("Password"+to_string(rand()%10000007)+".txt" );
+	auto start=clock();
+	ofstream MyFile("Password"+to_string(rand()%1000000007)+".txt" );
 	for(int i=0;i<v.size();i++){
 		MyFile << v[i];
 		MyFile << "\n";
 	}
 	MyFile.close();
+	auto endi=clock();
+	cout << "File Created in "<<(double)(endi-start)/CLOCKS_PER_SEC << "s" << endl;
 	return 0;
 }
